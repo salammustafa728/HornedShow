@@ -1,4 +1,8 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Navbar'
 
 class Header extends React.Component {
 
@@ -7,9 +11,14 @@ class Header extends React.Component {
        
         return(
             <header>
-                <h1>
-                Gallery Of Horns 
-                </h1>
+            <Navbar bg="primary" variant="dark">
+            <Container>
+            <Navbar.Brand href="#home">Gallery Of Horns</Navbar.Brand>
+            <Nav className="me-auto">
+            </Nav>
+            </Container>
+             </Navbar>
+              
             </header>
         )
     }
