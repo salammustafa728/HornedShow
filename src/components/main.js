@@ -2,108 +2,67 @@ import React from 'react';
 import HornedBeasts from './HornedBeasts'
 import Data from '../data.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from './Form'
-// import Container from 'react-bootstrap/Container'
-
+import Form from 'react-bootstrap/Form'
 
 class Main extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            updateSeletedBeast:6
+    filter=(event)=>{
+        const numberHorns = Number(event.target.value);
+        let gallery=Data;
+        if(numberHorns){
+            gallery=Data.filter((creature)=>creature.horns===numberHorns)
         }
+        this.props.updateBeast(gallery);
     }
-
-    updateSeletedBeast = (e) => {
-        this.setState({
-            updateSeletedBeast: e.target.value
-        })
-        this.onSubmit();
-    }
-    onSubmit=()=>{
-      this.setState=({
-        selectedBeast:true
-      })
-    }
-    
     render(){
         
             return(
-               <div>         
-                         <Form />
-                            {Data.map((beast)=>{
-                            return(
-                                <div>
-                                    {
-                                        this.props.updateSeletedBeast === beast.horns || 
-                                        <HornedBeasts key={beast.horns}
+                <div>
+                      <div>
+                          <Form>
+                              <Form.Group>
+                              
+                                  <Form.Label>Select Number Of Horns</Form.Label>
+                              <Form.Control as='select' onChange={this.filter}>
+                              <option>Select Number Of Horns </option>
+                               <option value="">All</option>
+                               <option value="1">One</option>
+                               <option value="2">Two</option>
+                               <option value="3">Three</option>
+                               <option value="100">more</option>
+
+                              </Form.Control>
+                              
+                              </Form.Group>
+                          </Form>
+                          <div>
+
+                                {
+                                    this.props.allBeast.map((beast,indx) => (
+                                        <HornedBeasts 
+                                        key={indx}
+                                        index={indx}
                                         title={beast.title}
                                         imgIncrease={beast.imgIncrease}
                                         img={beast.image_url}
                                         description={beast.description}
-                                        horns={beast.horns}
-                                        /> ||  this.props.updateSeletedBeast === '5' ||
-                                       <HornedBeasts key={beast.horns}
-                                       title={beast.title}
-                                       imgIncrease={beast.imgIncrease}
-                                       img={beast.image_url}
-                                       description={beast.description}
-                                       horns={beast.horns}
-                                    
-                                        />
-                                   }  
+                                        handleClose={this.props.handleClose}
+                                        handleOpen={this.props.handleOpen}
+                                    />
+                                    ))
+                                }
 
-                                     </div>
-                         )})}
-                    
-               </div>
+                          </div>
+                   
+    
+                    </div>
+                </div>
+             
         )  
+        
     }
 }
 
 
 
 export default Main;
-
-
-
-
-// import React from 'react';
-// import HornedBeasts from './HornedBeasts'
-// import Data from '../data.json';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-// class Main extends React.Component {
-
-//     render(){
-        
-//             return(
-//                <div>
-//                     {
-//                         Data.map((beast)=>{
-//                             return(
-//                                 <HornedBeasts 
-//                                     title={beast.title}
-//                                     imgIncrease={beast.imgIncrease}
-//                                     img={beast.image_url}
-//                                     description={beast.description}
-//                                     handleClose={this.props.handleClose}
-//                                     handleOpen={this.props.handleOpen}
-//                                 />
-                                
-//                             )
-//                         })
-//                     }
-    
-//                </div>
-//         )  
-        
-//     }
-// }
-
-
-
-// export default Main;
 
