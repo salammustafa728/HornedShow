@@ -21,7 +21,8 @@ class HornedBeasts extends React.Component {
     render(){
 
         return(
-                 <Card style={{ width: '18rem' }}>
+          <div >
+              <Card style={{ width: '18rem' }} >
                   <Card.Body>
                   <Card.Title>{this.props.title}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">&hearts;{this.state.imgIncrease}</Card.Subtitle>
@@ -30,6 +31,8 @@ class HornedBeasts extends React.Component {
                     <Card.Text> {this.props.description} </Card.Text>
                   </Card.Body>
                   </Card>
+          </div>
+                 
         )
     }
 }

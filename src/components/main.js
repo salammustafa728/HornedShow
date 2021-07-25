@@ -18,10 +18,10 @@ class Main extends React.Component {
             return(
                 <div>
                       <div>
-                          <Form>
+                          <Form style={{width:'500px',margin:'10px auto',border:'1px solid grey',background:'#B5EAEA'}}>
                               <Form.Group>
                               
-                                  <Form.Label>Select Number Of Horns</Form.Label>
+                                  <Form.Label style={{marginLeft:'20px'}}>Select Number Of Horns</Form.Label>
                               <Form.Control as='select' onChange={this.filter}>
                               <option>Select Number Of Horns </option>
                                <option value="">All</option>
@@ -34,10 +34,11 @@ class Main extends React.Component {
                               
                               </Form.Group>
                           </Form>
-                          <div>
+                          <div style={{display:'flex',flexWrap:'wrap',margin:'10px 20px 10px 10px'}}>
 
                                 {
                                     this.props.allBeast.map((beast,indx) => (
+                                        <div style={{marginLeft:'10px'}}>
                                         <HornedBeasts 
                                         key={indx}
                                         index={indx}
@@ -48,6 +49,7 @@ class Main extends React.Component {
                                         handleClose={this.props.handleClose}
                                         handleOpen={this.props.handleOpen}
                                     />
+                                    </div>
                                     ))
                                 }
 

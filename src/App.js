@@ -50,6 +50,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+        <div >
         <Main 
         allBeast={this.state.allBeast}
         hornedData={hornedDta}
@@ -57,7 +58,9 @@ class App extends React.Component {
         handleOpen={this.handleOpen}
         updateBeast={this.updateBeast}
         />
-        <SelectedBeast 
+        </div>
+       <div>
+       <SelectedBeast  
           show={this.state.show}
           img={this.state.img}
           title={this.state.title}
@@ -65,6 +68,7 @@ class App extends React.Component {
           handleClose={this.handleClose}
           handleOpen={this.handleOpen}
         />
+       </div>
         <Footer />
       </div>
     )
